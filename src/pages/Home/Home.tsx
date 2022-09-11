@@ -15,13 +15,17 @@ import { GiMicrophone } from 'react-icons/gi'
 import { MdStoreMallDirectory } from 'react-icons/md'
 import { SiSnapcraft } from 'react-icons/si'
 
+import AppleStore from 'assets/AppleStore.png'
+import GooglePlay from 'assets/GooglePlay.png'
+import MaricaApp from 'assets/MaricaApp.png'
+
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import IconCard from 'components/IconCard'
 
 import useTitle from 'hooks/useTitle'
 
-import { BgPage } from './style'
+import { BgPage, FooterBanner } from './style'
 
 const Home: React.FC = () => {
   const setTitle = useTitle()
@@ -116,6 +120,39 @@ const Home: React.FC = () => {
             </Col>
           </Row>
         </Container>
+        <FooterBanner>
+          <Container>
+            <Row>
+              <Col className="col-12 col-md-8">
+                <h2 className="mb-5">Conheca nosso aplicativo</h2>
+                <p>
+                  Tenha o Guia Oficial de Turismo de Maricá a qualquer momento,
+                  na palma das suas mãos!
+                </p>
+                <div className="mt-5">
+                  <img
+                    className="me-4 img-fluid"
+                    src={GooglePlay}
+                    alt="Google Play"
+                  />
+                  <img
+                    className="img-fluid"
+                    src={AppleStore}
+                    alt="Apple Store"
+                  />
+                </div>
+              </Col>
+              <Col className="d-none d-md-flex col-md-4">
+                <img src={MaricaApp} alt="Aplicativo no celular" />
+              </Col>
+            </Row>
+          </Container>
+        </FooterBanner>
+        {/* <BlueBanner>
+          <WhiteBanner>
+            <BlueTriangle />
+          </WhiteBanner>
+        </BlueBanner> */}
       </BgPage>
       <Footer />
     </>

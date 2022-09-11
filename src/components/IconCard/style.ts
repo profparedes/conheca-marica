@@ -7,11 +7,12 @@ export const BgCard = styled.div`
   color: #444;
 
   button {
-    padding: 0px 20px 0px 20px;
+    padding: 0px 30px 0px 30px;
     border-radius: 20px;
     background-color: #fff;
     color: #6ebd00;
     border: 1px solid #6ebd00;
+    font-size: 20px;
   }
 
   button:hover {
