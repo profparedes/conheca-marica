@@ -1,6 +1,7 @@
 import { memo } from 'react'
 
 import { IconType } from 'react-icons'
+import { Link } from 'react-router-dom'
 
 import { BgCard } from './style'
 
@@ -8,9 +9,15 @@ interface IIconCardProps {
   icon: IconType
   title: string
   description: string
+  link?: string
 }
 
-const IconCard: React.FC<IIconCardProps> = ({ icon, title, description }) => {
+const IconCard: React.FC<IIconCardProps> = ({
+  icon,
+  title,
+  description,
+  link,
+}) => {
   const Icon = icon
 
   return (
@@ -20,7 +27,11 @@ const IconCard: React.FC<IIconCardProps> = ({ icon, title, description }) => {
       </div>
       <h2>{title}</h2>
       <p className="text-center mb-3 flex-grow-1">{description}</p>
-      <button type="button">Acessar</button>
+      <button type="button">
+        <Link className="text-decoration-none" to={`${link}`}>
+          Acessar
+        </Link>
+      </button>
     </BgCard>
   )
 }

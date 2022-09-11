@@ -74,51 +74,51 @@ const Header: React.FC = () => {
           <ul>
             <li className="d-flex algin-items-center">
               <AiFillHome className="mt-1 me-3" />
-              Inícial
+              <Link to="/">Inícial</Link>
             </li>
             <li className="d-flex algin-items-center">
               <AiOutlineInfoCircle className="mt-1 me-3" />
-              Sobre a cidade
+              <Link to="/sobre-a-cidade">Sobre a cidade</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaUmbrellaBeach className="mt-1 me-3" />
-              Pontos Turísticos
+              <Link to="/pontos-turisticos">Pontos Turísticos</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaBed className="mt-1 me-3" />
-              Hotéis e Pousadas
+              <Link to="/hoteis-e-pousadas">Hotéis e Pousadas</Link>
             </li>
             <li className="d-flex algin-items-center">
               <BiRestaurant className="mt-1 me-3" />
-              Bares e Restaurantes
+              <Link to="/bares-e-restaurantes">Bares e Restaurantes</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaMotorcycle className="mt-1 me-3" />
-              Delivery
+              <Link to="/delivery">Delivery</Link>
             </li>
             <li className="d-flex algin-items-center">
               <MdStoreMallDirectory className="mt-1 me-3" />
-              Comércio Local
+              <Link to="/comercio-local">Comercio Local</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaTicketAlt className="mt-1 me-3" />
-              Cupons de Desconto
+              <Link to="/cupons-de-desconto">Cupons de Desconto</Link>
             </li>
             <li className="d-flex algin-items-center">
               <GiMicrophone className="mt-1 me-3" />
-              Espaços para Eventos
+              <Link to="/espacos-para-eventos">Espaços para Eventos</Link>
             </li>
             <li className="d-flex algin-items-center">
               <BsCalendarWeek className="mt-1 me-3" />
-              Eventos
+              <Link to="/eventos">Eventos</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaRoute className="mt-1 me-3" />
-              Roteiros Turísticos
+              <Link to="/roteiros-turisticos">Roteiros Turísticos</Link>
             </li>
             <li className="d-flex algin-items-center">
               <SiSnapcraft className="mt-1 me-3" />
-              Artesanato
+              <Link to="/artesanato">Artesanato</Link>
             </li>
           </ul>
         </Offcanvas.Body>

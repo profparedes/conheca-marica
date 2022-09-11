@@ -46,6 +46,7 @@ const Home: React.FC = () => {
                 icon={FaUmbrellaBeach}
                 title="Pontos Turísticos"
                 description="Conheça nossas praias, lagoas, grutas e outros pontos turísticos"
+                link="/pontos-turisticos"
               />
             </Col>
             <Col>
@@ -53,6 +54,7 @@ const Home: React.FC = () => {
                 icon={FaBed}
                 title="Hotéis e Pousadas"
                 description="Saiba onde se hospedar em Maricá"
+                link="/hoteis-e-pousadas"
               />
             </Col>
             <Col>
@@ -60,6 +62,7 @@ const Home: React.FC = () => {
                 icon={BiRestaurant}
                 title="Bares e Restaurantes"
                 description="Aprecie a gastronomia de Maricá"
+                link="/bares-e-restaurantes"
               />
             </Col>
             <Col>
@@ -67,6 +70,7 @@ const Home: React.FC = () => {
                 icon={FaMotorcycle}
                 title="Delivery"
                 description="Receba o melhor de Maricá no conforto da sua casa"
+                link="/delivery"
               />
             </Col>
             <Col>
@@ -74,6 +78,7 @@ const Home: React.FC = () => {
                 icon={MdStoreMallDirectory}
                 title="Comércio Local"
                 description="Veja onde fazer as suas compras"
+                link="/comercio-local"
               />
             </Col>
             <Col>
@@ -81,6 +86,7 @@ const Home: React.FC = () => {
                 icon={FaTicketAlt}
                 title="Cupons de Desconto"
                 description="As melhores promoções para curtir a cidade"
+                link="/cupons-de-desconto"
               />
             </Col>
             <Col>
@@ -88,6 +94,7 @@ const Home: React.FC = () => {
                 icon={GiMicrophone}
                 title="Espaços para Eventos"
                 description="Locais para fazer suas festas ou reuniões"
+                link="/espacos-para-eventos"
               />
             </Col>
             <Col>
@@ -95,6 +102,7 @@ const Home: React.FC = () => {
                 icon={BsCalendarWeek}
                 title="Eventos"
                 description="Confira o calendário de eventos da cidade"
+                link="/eventos"
               />
             </Col>
             <Col>
@@ -102,6 +110,7 @@ const Home: React.FC = () => {
                 icon={FaRoute}
                 title="Roteiros turísticos"
                 description="Conheca diversas trilhas ecológicas e de aventura, com váriados níveis de dificuldade"
+                link="/roteiros-turisticos"
               />
             </Col>
             <Col>
@@ -109,6 +118,7 @@ const Home: React.FC = () => {
                 icon={SiSnapcraft}
                 title="Artesanato"
                 description="Conheça e compre as criações dos artesãos de Maricá/RJ"
+                link="/artesanato"
               />
             </Col>
             <Col>
@@ -116,6 +126,7 @@ const Home: React.FC = () => {
                 icon={AiFillHome}
                 title="Sobre a cidade"
                 description="Conheça mais sobre Maricá"
+                link="/sobre-a-cidade"
               />
             </Col>
           </Row>

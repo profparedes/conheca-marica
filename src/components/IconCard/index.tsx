@@ -1,1 +1,1 @@
-export { default } from './BaseComponent'
+export { default } from './IconCard'
