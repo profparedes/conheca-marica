@@ -24,7 +24,7 @@ const PontosTuristicos: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log('spots array', spotCategory)
+  console.log('pontos array', pontos)
 
   return (
     <>
@@ -45,12 +45,12 @@ const PontosTuristicos: React.FC = () => {
               ))}
           </div>
 
-          <Row className="row-cols-3">
+          <Row className="row-cols-3 g-4">
             {!isLoading &&
               !error &&
               Array.isArray(pontos) &&
               pontos.map((item) => (
-                <Col key={item.id}>
+                <Col className="d-flex" key={item.id}>
                   <ItemCard item={item} />
                 </Col>
               ))}
