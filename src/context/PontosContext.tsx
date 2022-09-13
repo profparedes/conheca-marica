@@ -13,6 +13,7 @@ import { SpotCategoryType, SpotType } from 'types/SpotType'
 
 interface IContextProps {
   pontos: SpotType[]
+  spotCategory: SpotCategoryType[]
   isLoading: boolean
   error: string | null
   fetchPontos: (search?: string) => Promise<void>
@@ -66,9 +67,10 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
           pontos,
           isLoading,
           error,
+          spotCategory,
           fetchPontos,
         }),
-        [pontos, isLoading, error, fetchPontos],
+        [pontos, spotCategory, isLoading, error, fetchPontos],
       )}
     >
       {children}
