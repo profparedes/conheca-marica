@@ -15,3 +15,9 @@ export type SpotType = {
     label: string
   }[]
 }
+
+export type SpotCategoryType = {
+  id: number
+  label: string
+  count: number
+}

@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react'
 
-import { Col, Container, Row } from 'react-bootstrap'
+import { Carousel, Col, Container, Row } from 'react-bootstrap'
 import { AiFillHome } from 'react-icons/ai'
 import { BiRestaurant } from 'react-icons/bi'
 import { BsCalendarWeek } from 'react-icons/bs'
@@ -19,6 +19,8 @@ import AppleStore from 'assets/AppleStore.png'
 import GooglePlay from 'assets/GooglePlay.png'
 import MaricaApp from 'assets/MaricaApp.png'
 
+import { useBanners } from 'context/BannerContext'
+
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import IconCard from 'components/IconCard'
@@ -28,6 +30,7 @@ import useTitle from 'hooks/useTitle'
 import { BgPage, FooterBanner } from './style'
 
 const Home: React.FC = () => {
+  const { banners, isLoading, error } = useBanners()
   const setTitle = useTitle()
 
   useEffect(() => {
@@ -39,6 +42,27 @@ const Home: React.FC = () => {
     <>
       <Header />
       <BgPage>
+        <Carousel>
+          {isLoading && <p className="text-center">Loading...</p>}
+          {error && <h2>Falha no carregamento</h2>}
+          {!isLoading &&
+            !error &&
+            Array.isArray(banners) &&
+            banners.map((banner) => (
+              <Carousel.Item key={banner.id}>
+                <img
+                  className="d-none d-lg-block w-100"
+                  src={banner.image_l}
+                  alt="First slide"
+                />
+                <img
+                  className="d-block d-lg-none w-100"
+                  src={banner.image_s}
+                  alt="First slide"
+                />
+              </Carousel.Item>
+            ))}
+        </Carousel>
         <Container className="flex-grow-1">
           <Row className="row-cols-2 row-cols-md-3 g-3 my-4 justify-content-center">
             <Col className="">

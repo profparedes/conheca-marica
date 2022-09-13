@@ -29,7 +29,7 @@ const PontosTuristicos: React.FC = () => {
       <Header />
       <BgPage className="flex-grow-1">
         <Container>
-          <Row className="row-cols-4">
+          <Row className="row-cols-3">
             {isLoading && <p className="text-center">Loading...</p>}
             {error && <h2>Falha no carregamento</h2>}
             {!isLoading &&

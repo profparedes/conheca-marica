@@ -9,43 +9,35 @@ import {
 
 import Api from 'services/Api'
 
-import { SpotCategoryType, SpotType } from 'types/SpotType'
+import { BannerType } from 'types/BannerType'
 
 interface IContextProps {
-  pontos: SpotType[]
+  banners: BannerType[]
   isLoading: boolean
   error: string | null
-  fetchPontos: (search?: string) => Promise<void>
+  fetchBanners: (search?: string) => Promise<void>
 }
 
-interface IPontosProviderProps {
+interface IBannersProviderProps {
   children: React.ReactNode
 }
 
 export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
-export const PontosProvider: React.FC<IPontosProviderProps> = ({
+export const BannersProvider: React.FC<IBannersProviderProps> = ({
   children,
 }) => {
-  const [pontos, setPontos] = useState<SpotType[]>([])
-  const [spotCategory, setSpotCategory] = useState<SpotCategoryType[]>([])
+  const [banners, setBanners] = useState<BannerType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchPontos = useCallback(async (search?: string) => {
+  const fetchBanners = useCallback(async () => {
     setIsLoading(true)
     setError(null)
 
-    const params = {
-      // search???
-    }
-
     try {
-      const response = await Api.get('/pontos', {
-        params,
-      })
-      setPontos(response.data.collection)
-      setSpotCategory(response.data.categorias)
+      const response = await Api.get('/banners')
+      setBanners(response.data)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -55,7 +47,7 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
   }, [])
 
   useEffect(() => {
-    fetchPontos()
+    fetchBanners()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -63,12 +55,12 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
     <ReactContext.Provider
       value={useMemo(
         () => ({
-          pontos,
+          banners,
           isLoading,
           error,
-          fetchPontos,
+          fetchBanners,
         }),
-        [pontos, isLoading, error, fetchPontos],
+        [banners, isLoading, error, fetchBanners],
       )}
     >
       {children}
@@ -76,12 +68,12 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
   )
 }
 
-export const usePontos = (): IContextProps => {
+export const useBanners = (): IContextProps => {
   const context = useContext(ReactContext)
 
   if (!context) {
     // eslint-disable-next-line no-console
-    console.error('usePontosHook must be within PontosProvider')
+    console.error('useBanners must be within BannersProvider')
   }
 
   return context

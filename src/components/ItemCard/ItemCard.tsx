@@ -11,7 +11,7 @@ interface IItemCardProps {
 const ItemCard: React.FC<IItemCardProps> = ({ item }) => {
   return (
     <Card className="w-100">
-      <Ratio aspectRatio="1x1">
+      <Ratio aspectRatio="16x9">
         <img src={item.capa} alt={item.nome} />
       </Ratio>
       <Card.Body>
