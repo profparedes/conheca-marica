@@ -16,7 +16,8 @@ interface IContextProps {
   spotCategory: SpotCategoryType[]
   isLoading: boolean
   error: string | null
-  fetchPontos: (search?: string) => Promise<void>
+  fetchBuscaPontos: (busca?: string) => Promise<void>
+  fetchPontos: () => Promise<void>
 }
 
 interface IPontosProviderProps {
@@ -33,20 +34,40 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchPontos = useCallback(async (search?: string) => {
+  const fetchPontos = useCallback(async () => {
+    setIsLoading(true)
+    setError(null)
+
+    // const params = {
+    //   busca,
+    // }
+
+    try {
+      const response = await Api.get('/pontos', {})
+      setPontos(response.data.collection)
+      setSpotCategory(response.data.categorias)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const fetchBuscaPontos = useCallback(async (busca?: string) => {
     setIsLoading(true)
     setError(null)
 
     const params = {
-      // search???
+      busca,
     }
 
     try {
-      const response = await Api.get('/pontos', {
+      const response = await Api.get('/pontos/busca', {
         params,
       })
       setPontos(response.data.collection)
-      setSpotCategory(response.data.categorias)
+      console.log('busca', response)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -69,8 +90,9 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
           error,
           spotCategory,
           fetchPontos,
+          fetchBuscaPontos,
         }),
-        [pontos, spotCategory, isLoading, error, fetchPontos],
+        [pontos, spotCategory, isLoading, error, fetchPontos, fetchBuscaPontos],
       )}
     >
       {children}
