@@ -1,11 +1,12 @@
 import { memo, useEffect } from 'react'
 
-import { Container } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 import { usePontos } from 'context/PontosContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import ItemCard from 'components/ItemCard'
 
 import useTitle from 'hooks/useTitle'
 
@@ -28,7 +29,18 @@ const PontosTuristicos: React.FC = () => {
       <Header />
       <BgPage className="flex-grow-1">
         <Container>
-          <div>Pontos Turisticos</div>
+          <Row className="row-cols-4">
+            {isLoading && <p className="text-center">Loading...</p>}
+            {error && <h2>Falha no carregamento</h2>}
+            {!isLoading &&
+              !error &&
+              Array.isArray(pontos) &&
+              pontos.map((item) => (
+                <Col key={item.id}>
+                  <ItemCard item={item} />
+                </Col>
+              ))}
+          </Row>
         </Container>
       </BgPage>
       <Footer />

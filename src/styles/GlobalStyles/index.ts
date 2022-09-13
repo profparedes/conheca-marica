@@ -20,4 +20,13 @@ export default createGlobalStyle`
         margin-bottom: 0;
     }
 
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: inherit;
+    }
+
 `

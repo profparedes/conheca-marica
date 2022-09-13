@@ -9,10 +9,10 @@ import {
 
 import Api from 'services/Api'
 
-import { PontoType } from 'types/PontoType'
+import { SpotType } from 'types/SpotType'
 
 interface IContextProps {
-  pontos: PontoType[]
+  pontos: SpotType[]
   isLoading: boolean
   error: string | null
   fetchPontos: (search?: string) => Promise<void>
@@ -27,7 +27,7 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 export const PontosProvider: React.FC<IPontosProviderProps> = ({
   children,
 }) => {
-  const [pontos, setPontos] = useState<PontoType[]>([])
+  const [pontos, setPontos] = useState<SpotType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 

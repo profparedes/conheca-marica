@@ -1,4 +1,4 @@
-export type PontoType = {
+export type SpotType = {
   id: number
   nome: string
   capa: string
