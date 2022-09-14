@@ -101,7 +101,7 @@ const PontosTuristicos: React.FC = () => {
               Array.isArray(spots) &&
               spots.map((item) => (
                 <Col key={item.id} className="d-flex">
-                  <ItemCard item={item} />
+                  <ItemCard endPoint="pontos-turisticos" item={item} />
                 </Col>
               ))}
           </Row>

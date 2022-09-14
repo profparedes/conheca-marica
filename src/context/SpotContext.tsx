@@ -9,7 +9,7 @@ import {
 
 import Api from 'services/Api'
 
-import { SpotCategoryType, SpotType } from 'types/SpotType'
+import { ItemSpotType, SpotCategoryType, SpotType } from 'types/SpotType'
 
 interface IContextProps {
   spots: SpotType[]
@@ -18,6 +18,7 @@ interface IContextProps {
   error: string | null
   fetchSearchSpots: (busca?: string) => Promise<void>
   fetchSpots: () => Promise<void>
+  fetchSpot: (id: number | string) => Promise<void>
   fetchSpotsCategory: (id?: number) => Promise<void>
 }
 
@@ -29,6 +30,7 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
 export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
   const [spots, setSpots] = useState<SpotType[]>([])
+  const [spot, setSpot] = useState<ItemSpotType | null>(null)
   const [spotCategory, setSpotCategory] = useState<SpotCategoryType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -48,6 +50,25 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
       setIsLoading(false)
     }
   }, [])
+
+  const fetchSpot = useCallback(
+    async (id: number | string) => {
+      setIsLoading(true)
+      setError(null)
+
+      try {
+        const response = await Api.get(`/pontos/${id}`)
+        setSpot(response.data)
+        console.log('Spot item', spot)
+      } catch {
+        // eslint-disable-next-line no-console
+        setError('Algo de errado não está certo!')
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [spot],
+  )
 
   const fetchSearchSpots = useCallback(async (busca?: string) => {
     setIsLoading(true)
@@ -99,6 +120,7 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
           error,
           spotCategory,
           fetchSpots,
+          fetchSpot,
           fetchSearchSpots,
           fetchSpotsCategory,
         }),
@@ -108,6 +130,7 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
           isLoading,
           error,
           fetchSpots,
+          fetchSpot,
           fetchSearchSpots,
           fetchSpotsCategory,
         ],

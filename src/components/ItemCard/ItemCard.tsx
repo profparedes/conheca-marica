@@ -1,24 +1,39 @@
 import { memo } from 'react'
 
 import { Ratio } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
+import { EventType } from 'types/EventType'
+import { HotelType } from 'types/HotelType'
+import { RestaurantType } from 'types/RestaurantType'
+import { SpaceType } from 'types/SpaceType'
 import { SpotType } from 'types/SpotType'
+import { StoreType } from 'types/StoreType'
 
 import { CardContainer, CategoryStyle, CoverImg } from './style'
 
 interface IItemCardProps {
-  item: SpotType
+  item:
+    | SpotType
+    | EventType
+    | HotelType
+    | RestaurantType
+    | SpaceType
+    | StoreType
+  endPoint?: string
 }
 
-const ItemCard: React.FC<IItemCardProps> = ({ item }) => {
+const ItemCard: React.FC<IItemCardProps> = ({ item, endPoint }) => {
   return (
-    <CardContainer className="w-100">
+    <CardContainer className="w-100 position-relative">
       <Ratio aspectRatio="16x9">
         <CoverImg capa={item.capa} />
         {/* <img src={item.capa} alt={item.nome} /> */}
       </Ratio>
       <div className="p-3">
-        <h2 className="">{item.nome}</h2>
+        <Link to={`/${endPoint}/${item.id}`} className="stretched-link">
+          <h2 className="">{item.nome}</h2>
+        </Link>
         <div className="d-flex flex-wrap">
           {item.categorias.map((category) => (
             <CategoryStyle>{category.label}</CategoryStyle>

@@ -53,12 +53,12 @@ const Home: React.FC = () => {
                 <img
                   className="d-none d-lg-block w-100"
                   src={banner.image_l}
-                  alt="First slide"
+                  alt="Imagem do slide"
                 />
                 <img
                   className="d-block d-lg-none w-100"
                   src={banner.image_s}
-                  alt="First slide"
+                  alt="Imagem do slide"
                 />
               </Carousel.Item>
             ))}
