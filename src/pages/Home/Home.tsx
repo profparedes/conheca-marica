@@ -69,7 +69,7 @@ const Home: React.FC = () => {
               <IconCard
                 icon={FaUmbrellaBeach}
                 title="Pontos Turísticos"
-                description="Conheça nossas praias, lagoas, grutas e outros pontos turísticos"
+                description="Conheça nossas praias, lagoas, grutas e outros spots turísticos"
                 link="/pontos-turisticos"
               />
             </Col>

@@ -20,13 +20,13 @@ const ItemCard: React.FC<IItemCardProps> = ({ item }) => {
       <div className="p-3">
         <h2 className="">{item.nome}</h2>
         <div className="d-flex flex-wrap">
-          {item.categorias.map((categoria) => (
-            <CategoryStyle>{categoria.label}</CategoryStyle>
+          {item.categorias.map((category) => (
+            <CategoryStyle>{category.label}</CategoryStyle>
           ))}
         </div>
         <div className="flex-grow-1">
-          {item.enderecos.map((endereco) => (
-            <p className="fs-5 text-muted">{endereco.label}</p>
+          {item.enderecos.map((address) => (
+            <p className="fs-5 text-muted">{address.label}</p>
           ))}
         </div>
       </div>

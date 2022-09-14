@@ -12,39 +12,34 @@ import Api from 'services/Api'
 import { SpotCategoryType, SpotType } from 'types/SpotType'
 
 interface IContextProps {
-  pontos: SpotType[]
+  spots: SpotType[]
   spotCategory: SpotCategoryType[]
   isLoading: boolean
   error: string | null
-  fetchBuscaPontos: (busca?: string) => Promise<void>
-  fetchPontos: () => Promise<void>
+  fetchSearchSpots: (busca?: string) => Promise<void>
+  fetchSpots: () => Promise<void>
+  fetchSpotsCategory: (id?: number) => Promise<void>
 }
 
-interface IPontosProviderProps {
+interface ISpotsProviderProps {
   children: React.ReactNode
 }
 
 export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
-export const PontosProvider: React.FC<IPontosProviderProps> = ({
-  children,
-}) => {
-  const [pontos, setPontos] = useState<SpotType[]>([])
+export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
+  const [spots, setSpots] = useState<SpotType[]>([])
   const [spotCategory, setSpotCategory] = useState<SpotCategoryType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchPontos = useCallback(async () => {
+  const fetchSpots = useCallback(async () => {
     setIsLoading(true)
     setError(null)
 
-    // const params = {
-    //   busca,
-    // }
-
     try {
-      const response = await Api.get('/pontos', {})
-      setPontos(response.data.collection)
+      const response = await Api.get('/pontos')
+      setSpots(response.data.collection)
       setSpotCategory(response.data.categorias)
     } catch {
       // eslint-disable-next-line no-console
@@ -54,7 +49,7 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
     }
   }, [])
 
-  const fetchBuscaPontos = useCallback(async (busca?: string) => {
+  const fetchSearchSpots = useCallback(async (busca?: string) => {
     setIsLoading(true)
     setError(null)
 
@@ -66,8 +61,22 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
       const response = await Api.get('/pontos/busca', {
         params,
       })
-      setPontos(response.data.collection)
-      console.log('busca', response)
+      setSpots(response.data.collection)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const fetchSpotsCategory = useCallback(async (id?: number) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await Api.get(`/pontos/categorias/${id}`)
+      setSpots(response.data.collection)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -77,7 +86,7 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
   }, [])
 
   useEffect(() => {
-    fetchPontos()
+    fetchSpots()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -85,14 +94,23 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
     <ReactContext.Provider
       value={useMemo(
         () => ({
-          pontos,
+          spots,
           isLoading,
           error,
           spotCategory,
-          fetchPontos,
-          fetchBuscaPontos,
+          fetchSpots,
+          fetchSearchSpots,
+          fetchSpotsCategory,
         }),
-        [pontos, spotCategory, isLoading, error, fetchPontos, fetchBuscaPontos],
+        [
+          spots,
+          spotCategory,
+          isLoading,
+          error,
+          fetchSpots,
+          fetchSearchSpots,
+          fetchSpotsCategory,
+        ],
       )}
     >
       {children}
@@ -100,7 +118,7 @@ export const PontosProvider: React.FC<IPontosProviderProps> = ({
   )
 }
 
-export const usePontos = (): IContextProps => {
+export const useSpots = (): IContextProps => {
   const context = useContext(ReactContext)
 
   if (!context) {

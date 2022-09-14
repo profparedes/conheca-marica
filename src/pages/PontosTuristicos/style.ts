@@ -7,8 +7,13 @@ export const BgPage = styled.main`
 export const SearchContainer = styled.div`
   background-color: #fff;
   border: 1px solid;
-  border-radius: 20px;
-  padding: 0px 16px 0px 20px;
+  border-radius: 24px;
+  padding: 0px 8px 4px 20px;
+  width: 400px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 
   input {
     border: none;
