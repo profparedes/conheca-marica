@@ -49,15 +49,15 @@ const HoteisEPousadas: React.FC = () => {
       <BgPage className="flex-grow-1">
         <Container>
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <TitlePage title="Pontos Turísticos" />
+            <TitlePage title="Hoteis e Pousadas" />
             <SearchContainer className="d-flex align-items-center">
               <input
                 className="w-100 py-2"
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Buscar pontos turísticos"
-                aria-label="Buscar pontos turísticos"
+                placeholder="Buscar hoteis e pousadas"
+                aria-label="Buscar hoteis e pousadas"
                 aria-describedby="basic-addon2"
               />
               <div className="d-flex mt-2 mt-sm-0">
