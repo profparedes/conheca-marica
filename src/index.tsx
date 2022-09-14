@@ -10,19 +10,22 @@ import { BannersProvider } from 'context/BannerContext'
 import { HotelsProvider } from 'context/HotelContext'
 import { RestaurantsProvider } from 'context/RestaurantContext'
 import { SpotsProvider } from 'context/SpotContext'
+import { StoresProvider } from 'context/StoreContext'
 
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RestaurantsProvider>
-      <HotelsProvider>
-        <SpotsProvider>
-          <BannersProvider>
-            <App />
-          </BannersProvider>
-        </SpotsProvider>
-      </HotelsProvider>
-    </RestaurantsProvider>
+    <StoresProvider>
+      <RestaurantsProvider>
+        <HotelsProvider>
+          <SpotsProvider>
+            <BannersProvider>
+              <App />
+            </BannersProvider>
+          </SpotsProvider>
+        </HotelsProvider>
+      </RestaurantsProvider>
+    </StoresProvider>
   </React.StrictMode>,
 )
