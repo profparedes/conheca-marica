@@ -7,16 +7,19 @@ import 'services/i18n'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { BannersProvider } from 'context/BannerContext'
+import { HotelsProvider } from 'context/HotelContext'
 import { SpotsProvider } from 'context/SpotContext'
 
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <SpotsProvider>
-      <BannersProvider>
-        <App />
-      </BannersProvider>
-    </SpotsProvider>
+    <HotelsProvider>
+      <SpotsProvider>
+        <BannersProvider>
+          <App />
+        </BannersProvider>
+      </SpotsProvider>
+    </HotelsProvider>
   </React.StrictMode>,
 )
