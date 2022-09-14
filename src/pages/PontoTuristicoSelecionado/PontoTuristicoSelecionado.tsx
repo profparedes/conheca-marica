@@ -1,6 +1,9 @@
 import { memo, useEffect } from 'react'
 
 import { Container } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+
+import { useSpots } from 'context/SpotContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
@@ -11,11 +14,20 @@ import { BgPage } from './style'
 
 const SobreACidade: React.FC = () => {
   const setTitle = useTitle()
+  const { spot, isLoading, error, fetchSpot } = useSpots()
+  const { id } = useParams()
 
   useEffect(() => {
     setTitle('Sobre a Cidade | Conheça Maricá | Guia Turistico')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (id) fetchSpot(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id])
+
+  console.log('Spot array', spot)
 
   return (
     <>

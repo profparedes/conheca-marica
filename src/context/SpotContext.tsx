@@ -13,6 +13,7 @@ import { ItemSpotType, SpotCategoryType, SpotType } from 'types/SpotType'
 
 interface IContextProps {
   spots: SpotType[]
+  spot: ItemSpotType | null
   spotCategory: SpotCategoryType[]
   isLoading: boolean
   error: string | null
@@ -58,7 +59,7 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
 
       try {
         const response = await Api.get(`/pontos/${id}`)
-        setSpot(response.data)
+        setSpot(response.data.item)
         console.log('Spot item', spot)
       } catch {
         // eslint-disable-next-line no-console
@@ -116,6 +117,7 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
       value={useMemo(
         () => ({
           spots,
+          spot,
           isLoading,
           error,
           spotCategory,
@@ -126,6 +128,7 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
         }),
         [
           spots,
+          spot,
           spotCategory,
           isLoading,
           error,
