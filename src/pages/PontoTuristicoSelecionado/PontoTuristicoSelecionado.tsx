@@ -1,22 +1,29 @@
 import { memo, useEffect } from 'react'
 
-import App from 'App'
 import { Carousel, Col, Container, Ratio, Row } from 'react-bootstrap'
+import { BsCheckCircle } from 'react-icons/bs'
+import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
 import { useParams } from 'react-router-dom'
+import { ReactSVG } from 'react-svg'
 
 import AppleStore from 'assets/AppleStore.png'
 import GooglePlay from 'assets/GooglePlay.png'
 
 import { useSpots } from 'context/SpotContext'
 
-import CategoryTag from 'components/CategoryTag'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import TitlePage from 'components/TitlePage'
 
 import useTitle from 'hooks/useTitle'
 
-import { BgPage, CategoryStyled, ImageCarousel, ImgApp } from './style'
+import {
+  BgPage,
+  CategoryStyled,
+  IconStyle,
+  ImageCarousel,
+  ImgApp,
+} from './style'
 
 const SobreACidade: React.FC = () => {
   const setTitle = useTitle()
@@ -55,10 +62,10 @@ const SobreACidade: React.FC = () => {
             ))}
         </Carousel>
         <Container>
-          <Row>
+          <Row className="mb-5">
             <Col className="col-8">
               <TitlePage title={spot?.nome} />
-              <div className="d-flex mt-3">
+              <div className="d-flex flex-wrap mt-3">
                 {!isLoading &&
                   !error &&
                   Array.isArray(spot?.categorias) &&
@@ -69,12 +76,73 @@ const SobreACidade: React.FC = () => {
                   ))}
               </div>
               <div className="mt-3">
-                <p className="fs-4">{spot?.descricao_t}</p>
+                <p className="fs-5">{spot?.descricao_t}</p>
               </div>
               <div className="mt-5">
                 <h2>Sobre</h2>
+                <div className="border-bottom border-secondary mb-3" />
+                {spot?.addresses.map((i) => (
+                  <p key={i.id} className="fs-5 d-flex align-items-center mt-2">
+                    <IconStyle className="me-3">
+                      <HiOutlineLocationMarker size={30} />
+                    </IconStyle>
+                    {i.label}
+                  </p>
+                ))}
+                {spot?.phones.map((i) => (
+                  <p key={i.id} className="fs-5 d-flex align-items-center mt-2">
+                    <IconStyle className="me-3">
+                      <HiOutlinePhone size={30} />
+                    </IconStyle>
+                    {i.nome}: {i.number}
+                  </p>
+                ))}
               </div>
-              <div className="border-bottom border-secondary" />
+              <div className="mt-4">
+                <h2>Dicas</h2>
+                <div className="border-bottom border-secondary mb-3" />
+                <p>{spot?.dicas_t}</p>
+              </div>
+              <div className="mt-4">
+                <h2>Tipos de Viajantes</h2>
+                <div className="border-bottom border-secondary mb-3" />
+                <Row className="row-cols-3">
+                  {spot?.viajantes.map((i) => (
+                    <Col className="d-flex align-items-center">
+                      <p className="mb-3">
+                        <IconStyle>
+                          <BsCheckCircle size={26} />
+                        </IconStyle>
+                        {i.label}
+                      </p>
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+              <div className="mt-4">
+                <h2>Estruturas</h2>
+                <div className="border-bottom border-secondary mb-3" />
+                <Row className="row-cols-3">
+                  {spot?.estruturas.map((i) => (
+                    <Col className="d-flex align-items-center">
+                      <ReactSVG src={i.icone} />
+                      <p className="mb-3">{i.label}</p>
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+              <div className="mt-4">
+                <h2>Restricoes</h2>
+                <div className="border-bottom border-secondary mb-3" />
+                <Row className="row-cols-3">
+                  {spot?.restricoes.map((i) => (
+                    <Col className="d-flex align-items-center">
+                      <ReactSVG src={i.icone} />
+                      <p className="mb-3">{i.label}</p>
+                    </Col>
+                  ))}
+                </Row>
+              </div>
             </Col>
             <Col className="col-4">
               <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>

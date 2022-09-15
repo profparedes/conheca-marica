@@ -24,3 +24,7 @@ export const CategoryStyled = styled.div`
 export const ImgApp = styled.img`
   max-width: 200px;
 `
+
+export const IconStyle = styled.span`
+  color: #6ebd00;
+`
