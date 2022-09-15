@@ -4,7 +4,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 interface IBaseComponentProps {
-  title: string
+  title: string | undefined
 }
 
 const BaseComponent: React.FC<IBaseComponentProps> = ({ title }) => (

@@ -52,24 +52,20 @@ export const SpotsProvider: React.FC<ISpotsProviderProps> = ({ children }) => {
     }
   }, [])
 
-  const fetchSpot = useCallback(
-    async (id: number | string) => {
-      setIsLoading(true)
-      setError(null)
+  const fetchSpot = useCallback(async (id: number | string) => {
+    setIsLoading(true)
+    setError(null)
 
-      try {
-        const response = await Api.get(`/pontos/${id}`)
-        setSpot(response.data.item)
-        console.log('Spot item', spot)
-      } catch {
-        // eslint-disable-next-line no-console
-        setError('Algo de errado não está certo!')
-      } finally {
-        setIsLoading(false)
-      }
-    },
-    [spot],
-  )
+    try {
+      const response = await Api.get(`/pontos/${id}`)
+      setSpot(response.data.item)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
 
   const fetchSearchSpots = useCallback(async (busca?: string) => {
     setIsLoading(true)
