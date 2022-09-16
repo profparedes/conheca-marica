@@ -3,6 +3,7 @@ import { memo, useEffect } from 'react'
 import { Carousel, Col, Container, Ratio, Row } from 'react-bootstrap'
 import { BsCheckCircle } from 'react-icons/bs'
 import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
+import SVG from 'react-inlinesvg'
 import { useParams } from 'react-router-dom'
 import { ReactSVG } from 'react-svg'
 
@@ -124,7 +125,13 @@ const SobreACidade: React.FC = () => {
                 <Row className="row-cols-3">
                   {spot?.estruturas.map((i) => (
                     <Col className="d-flex align-items-center">
-                      <ReactSVG src={i.icone} />
+                      <SVG
+                        src={`${i.icone}/menu.svg`}
+                        width={22}
+                        title="Menu"
+                        className="me-3"
+                        fill="#6ebd00"
+                      />
                       <p className="mb-3">{i.label}</p>
                     </Col>
                   ))}
