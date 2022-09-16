@@ -1,7 +1,6 @@
 import { memo } from 'react'
 
 import { IconType } from 'react-icons'
-import { Link } from 'react-router-dom'
 
 import { BgCard } from './style'
 
@@ -28,9 +27,9 @@ const IconCard: React.FC<IIconCardProps> = ({
       <h2>{title}</h2>
       <p className="text-center mb-3 flex-grow-1">{description}</p>
       <button type="button">
-        <Link className="" to={`${link}`}>
+        <a className="" href={`${link}`} target="_blank" rel="noreferrer">
           Acessar
-        </Link>
+        </a>
       </button>
     </BgCard>
   )

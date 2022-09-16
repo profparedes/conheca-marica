@@ -24,6 +24,7 @@ import { useBanners } from 'context/BannerContext'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import IconCard from 'components/IconCard'
+import IconWebCard from 'components/IconWebCard'
 
 import useTitle from 'hooks/useTitle'
 
@@ -130,19 +131,19 @@ const Home: React.FC = () => {
               />
             </Col>
             <Col>
-              <IconCard
+              <IconWebCard
                 icon={FaRoute}
                 title="Roteiros turísticos"
                 description="Conheca diversas trilhas ecológicas e de aventura, com váriados níveis de dificuldade"
-                link="/roteiros-turisticos"
+                link="https://contato.site/5d9bab8/marica-cvb3/paginaprincipal"
               />
             </Col>
             <Col>
-              <IconCard
+              <IconWebCard
                 icon={SiSnapcraft}
                 title="Artesanato"
                 description="Conheça e compre as criações dos artesãos de Maricá/RJ"
-                link="/artesanato"
+                link="https://www.feirartemarica.com.br/"
               />
             </Col>
             <Col>
