@@ -36,7 +36,7 @@ const Routes: React.FC = () => {
           element={<PontoTuristicoSelecionado />}
         />
         <Route path="/roteiros-turisticos" element={<RoteirosTuristicos />} />
-        <Route path="/sobre-a-cidade" element={<SobreACidade />} />
+        <Route path="/sobre" element={<SobreACidade />} />
         <Route path="*" element={<NotFound />} />
       </Switch>
     </BrowserRouter>

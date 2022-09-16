@@ -39,7 +39,6 @@ const SobreACidade: React.FC = () => {
     if (id) fetchSpot(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
-  console.log('Spot selecionado', spot)
 
   return (
     <>
@@ -63,7 +62,7 @@ const SobreACidade: React.FC = () => {
         </Carousel>
         <Container>
           <Row className="mb-5">
-            <Col className="col-8">
+            <Col className="col-12 col-lg-8">
               <TitlePage title={spot?.nome} />
               <div className="d-flex flex-wrap mt-3">
                 {!isLoading &&
@@ -110,7 +109,7 @@ const SobreACidade: React.FC = () => {
                   {spot?.viajantes.map((i) => (
                     <Col className="d-flex align-items-center">
                       <p className="mb-3">
-                        <IconStyle>
+                        <IconStyle className="me-3">
                           <BsCheckCircle size={26} />
                         </IconStyle>
                         {i.label}
@@ -144,7 +143,7 @@ const SobreACidade: React.FC = () => {
                 </Row>
               </div>
             </Col>
-            <Col className="col-4">
+            <Col className="col-12 col-lg-4">
               <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
               <Ratio aspectRatio="1x1">
                 <p style={{ backgroundColor: '#888' }}>Mapa 1x1</p>

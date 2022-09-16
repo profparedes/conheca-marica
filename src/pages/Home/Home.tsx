@@ -150,7 +150,7 @@ const Home: React.FC = () => {
                 icon={AiFillHome}
                 title="Sobre a cidade"
                 description="Conheça mais sobre Maricá"
-                link="/sobre-a-cidade"
+                link="/sobre"
               />
             </Col>
           </Row>

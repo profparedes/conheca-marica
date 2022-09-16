@@ -78,7 +78,7 @@ const Header: React.FC = () => {
             </li>
             <li className="d-flex algin-items-center">
               <AiOutlineInfoCircle className="mt-1 me-3" />
-              <Link to="/sobre-a-cidade">Sobre a cidade</Link>
+              <Link to="/sobre">Sobre a cidade</Link>
             </li>
             <li className="d-flex algin-items-center">
               <FaUmbrellaBeach className="mt-1 me-3" />

@@ -68,5 +68,5 @@ export type ItemSpotType = {
   }[]
   viajantes: {
     label: string
-  }
+  }[]
 }
