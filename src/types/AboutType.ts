@@ -16,5 +16,5 @@ export type AboutType = {
     id: number
     app_id: number
     content: string
-  }[]
+  }
 }

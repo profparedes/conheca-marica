@@ -40,7 +40,12 @@ const SobreACidade: React.FC = () => {
             <TitlePage title="Conheça Maricá" />
             {isLoading && <p>Loading...</p>}
             {error && <p>Falha no Carregamento</p>}
-            {!isLoading && !error && <div>{about?.sobre.content}</div>}
+            {!isLoading && !error && about?.sobre?.content && (
+              <div
+                className="mt-4"
+                dangerouslySetInnerHTML={{ __html: about.sobre.content }}
+              />
+            )}
           </AboutContainer>
         </Container>
       </BgPage>
