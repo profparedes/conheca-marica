@@ -5,7 +5,6 @@ import { BsCheckCircle } from 'react-icons/bs'
 import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
 import SVG from 'react-inlinesvg'
 import { useParams } from 'react-router-dom'
-import { ReactSVG } from 'react-svg'
 
 import AppleStore from 'assets/AppleStore.png'
 import GooglePlay from 'assets/GooglePlay.png'
@@ -78,77 +77,100 @@ const SobreACidade: React.FC = () => {
               <div className="mt-3">
                 <p className="fs-5">{spot?.descricao_t}</p>
               </div>
-              <div className="mt-5">
-                <h2>Sobre</h2>
-                <div className="border-bottom border-secondary mb-3" />
-                {spot?.addresses.map((i) => (
-                  <p key={i.id} className="fs-5 d-flex align-items-center mt-2">
-                    <IconStyle className="me-3">
-                      <HiOutlineLocationMarker size={30} />
-                    </IconStyle>
-                    {i.label}
-                  </p>
-                ))}
-                {spot?.phones.map((i) => (
-                  <p key={i.id} className="fs-5 d-flex align-items-center mt-2">
-                    <IconStyle className="me-3">
-                      <HiOutlinePhone size={30} />
-                    </IconStyle>
-                    {i.nome}: {i.number}
-                  </p>
-                ))}
-              </div>
-              <div className="mt-4">
-                <h2>Dicas</h2>
-                <div className="border-bottom border-secondary mb-3" />
-                <p>{spot?.dicas_t}</p>
-              </div>
-              <div className="mt-4">
-                <h2>Tipos de Viajantes</h2>
-                <div className="border-bottom border-secondary mb-3" />
-                <Row className="row-cols-3">
-                  {spot?.viajantes.map((i) => (
-                    <Col className="d-flex align-items-center">
-                      <p className="mb-3">
-                        <IconStyle className="me-3">
-                          <BsCheckCircle size={26} />
-                        </IconStyle>
-                        {i.label}
-                      </p>
-                    </Col>
+              {Array.isArray(spot?.addresses) && (
+                <div className="mt-5">
+                  <h2>Sobre</h2>
+                  <div className="border-bottom border-secondary mb-3" />
+                  {spot?.addresses.map((i) => (
+                    <p
+                      key={i.id}
+                      className="fs-5 d-flex align-items-center mt-2"
+                    >
+                      <IconStyle className="me-3">
+                        <HiOutlineLocationMarker size={30} />
+                      </IconStyle>
+                      {i.label}
+                    </p>
                   ))}
-                </Row>
-              </div>
-              <div className="mt-4">
-                <h2>Estruturas</h2>
-                <div className="border-bottom border-secondary mb-3" />
-                <Row className="row-cols-3">
-                  {spot?.estruturas.map((i) => (
-                    <Col className="d-flex align-items-center">
-                      <SVG
-                        src={`${i.icone}/menu.svg`}
-                        width={22}
-                        title="Menu"
-                        className="me-3"
-                        fill="#6ebd00"
-                      />
-                      <p className="mb-3">{i.label}</p>
-                    </Col>
+
+                  {spot?.phones.map((i) => (
+                    <p
+                      key={i.id}
+                      className="fs-5 d-flex align-items-center mt-2"
+                    >
+                      <IconStyle className="me-3">
+                        <HiOutlinePhone size={30} />
+                      </IconStyle>
+                      {i.nome}: {i.number}
+                    </p>
                   ))}
-                </Row>
-              </div>
-              <div className="mt-4">
-                <h2>Restricoes</h2>
-                <div className="border-bottom border-secondary mb-3" />
-                <Row className="row-cols-3">
-                  {spot?.restricoes.map((i) => (
-                    <Col className="d-flex align-items-center">
-                      <ReactSVG src={i.icone} />
-                      <p className="mb-3">{i.label}</p>
-                    </Col>
-                  ))}
-                </Row>
-              </div>
+                </div>
+              )}
+              {Array.isArray(spot?.dicas_t) && (
+                <div className="mt-4">
+                  <h2>Dicas</h2>
+                  <div className="border-bottom border-secondary mb-3" />
+                  <p>{spot?.dicas_t}</p>
+                </div>
+              )}
+              {Array.isArray(spot?.viajantes) && (
+                <div className="mt-4">
+                  <h2>Tipos de Viajantes</h2>
+                  <div className="border-bottom border-secondary mb-3" />
+                  <Row className="row-cols-3">
+                    {spot?.viajantes.map((i) => (
+                      <Col className="d-flex align-items-center">
+                        <p className="mb-3">
+                          <IconStyle className="me-3">
+                            <BsCheckCircle size={26} />
+                          </IconStyle>
+                          {i.label}
+                        </p>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              )}
+              {Array.isArray(spot?.estruturas) && spot.estruturas.length > 0 && (
+                <div className="mt-4">
+                  <h2>Estruturas</h2>
+                  <div className="border-bottom border-secondary mb-3" />
+                  <Row className="row-cols-3">
+                    {spot?.estruturas.map((i) => (
+                      <Col className="d-flex align-items-center">
+                        <SVG
+                          src={`${i.icone}/menu.svg`}
+                          width={22}
+                          title="Menu"
+                          className="me-3"
+                          fill="#6ebd00"
+                        />
+                        <p className="mb-3">{i.label}</p>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              )}
+              {Array.isArray(spot?.restricoes) && spot.restricoes.length > 0 && (
+                <div className="mt-4">
+                  <h2>Restricoes</h2>
+                  <div className="border-bottom border-secondary mb-3" />
+                  <Row className="row-cols-3">
+                    {spot?.restricoes.map((i) => (
+                      <Col className="d-flex align-items-center">
+                        <SVG
+                          src={`${i.icone}/menu.svg`}
+                          width={22}
+                          title="Menu"
+                          className="me-3"
+                          fill="#6ebd00"
+                        />
+                        <p className="mb-3">{i.label}</p>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              )}
             </Col>
             <Col className="col-12 col-lg-4">
               <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>

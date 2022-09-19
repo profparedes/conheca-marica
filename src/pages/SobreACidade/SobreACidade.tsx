@@ -28,8 +28,6 @@ const SobreACidade: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log('Sobre a Cidade', about)
-
   return (
     <>
       <Header />
@@ -43,6 +41,7 @@ const SobreACidade: React.FC = () => {
             {!isLoading && !error && about?.sobre?.content && (
               <div
                 className="mt-4"
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: about.sobre.content }}
               />
             )}
