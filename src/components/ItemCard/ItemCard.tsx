@@ -35,7 +35,7 @@ const ItemCard: React.FC<IItemCardProps> = ({ item, endPoint }) => {
           <h2 className="">{item.nome}</h2>
         </Link>
         <div className="d-flex flex-wrap">
-          {item.categorias.map((category) => (
+          {item.categorias.slice(0, 4).map((category) => (
             <CategoryStyle>{category.label}</CategoryStyle>
           ))}
         </div>

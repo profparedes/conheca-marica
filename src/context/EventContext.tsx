@@ -38,7 +38,13 @@ export const EventsProvider: React.FC<IEventProviderProps> = ({ children }) => {
     setError(null)
 
     try {
-      const response = await Api.get('/eventos')
+      const response = await Api.get('/eventos', {
+        params: {
+          fields: 'datahora_inicio',
+          orderby: 'datahora_inicio',
+          order: 'asc',
+        },
+      })
       setEvents(response.data.collection)
       setEventCategory(response.data.categorias)
     } catch {
