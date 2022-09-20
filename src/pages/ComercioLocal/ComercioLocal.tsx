@@ -101,7 +101,7 @@ const ComercioLocal: React.FC = () => {
               Array.isArray(stores) &&
               stores.map((item) => (
                 <Col key={item.id} className="d-flex">
-                  <ItemCard item={item} />
+                  <ItemCard endPoint="comercio-local" item={item} />
                 </Col>
               ))}
           </Row>
