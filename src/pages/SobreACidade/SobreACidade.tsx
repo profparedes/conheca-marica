@@ -38,7 +38,7 @@ const SobreACidade: React.FC = () => {
             <TitlePage title="Conheça Maricá" />
             {isLoading && <p>Loading...</p>}
             {error && <p>Falha no Carregamento</p>}
-            {!isLoading && !error && about?.sobre?.content && (
+            {!isLoading && !error && about && (
               <div
                 className="mt-4"
                 // eslint-disable-next-line react/no-danger

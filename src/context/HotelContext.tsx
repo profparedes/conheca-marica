@@ -9,15 +9,17 @@ import {
 
 import Api from 'services/Api'
 
-import { HotelCategoryType, HotelType } from 'types/HotelType'
+import { HotelCategoryType, HotelType, ItemHotelType } from 'types/HotelType'
 
 interface IContextProps {
   hotels: HotelType[]
+  hotel: ItemHotelType | null
   hotelCategory: HotelCategoryType[]
   isLoading: boolean
   error: string | null
   fetchSearchHotels: (busca?: string) => Promise<void>
   fetchHotels: () => Promise<void>
+  fetchHotel: (id: number | string) => Promise<void>
   fetchHotelsCategory: (id?: number) => Promise<void>
 }
 
@@ -29,6 +31,7 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
 export const HotelsProvider: React.FC<IHotelProviderProps> = ({ children }) => {
   const [hotels, setHotels] = useState<HotelType[]>([])
+  const [hotel, setHotel] = useState<ItemHotelType | null>(null)
   const [hotelCategory, setHotelCategory] = useState<HotelCategoryType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -41,6 +44,21 @@ export const HotelsProvider: React.FC<IHotelProviderProps> = ({ children }) => {
       const response = await Api.get('/hoteis-e-pousadas')
       setHotels(response.data.collection)
       setHotelCategory(response.data.categorias)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const fetchHotel = useCallback(async (id: number | string) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await Api.get(`/hoteis-e-pousadas/${id}`)
+      setHotel(response.data.item)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -95,19 +113,23 @@ export const HotelsProvider: React.FC<IHotelProviderProps> = ({ children }) => {
       value={useMemo(
         () => ({
           hotels,
+          hotel,
           isLoading,
           error,
           hotelCategory,
           fetchHotels,
+          fetchHotel,
           fetchSearchHotels,
           fetchHotelsCategory,
         }),
         [
           hotels,
+          hotel,
           hotelCategory,
           isLoading,
           error,
           fetchHotels,
+          fetchHotel,
           fetchSearchHotels,
           fetchHotelsCategory,
         ],

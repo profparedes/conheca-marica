@@ -36,12 +36,14 @@ const ItemCard: React.FC<IItemCardProps> = ({ item, endPoint }) => {
         </Link>
         <div className="d-flex flex-wrap">
           {item.categorias.slice(0, 4).map((category) => (
-            <CategoryStyle>{category.label}</CategoryStyle>
+            <CategoryStyle key={category.id}>{category.label}</CategoryStyle>
           ))}
         </div>
         <div className="flex-grow-1">
           {item.enderecos.map((address) => (
-            <p className="fs-5 text-muted">{address.label}</p>
+            <p key={address.id} className="fs-5 text-muted">
+              {address.label}
+            </p>
           ))}
         </div>
       </div>

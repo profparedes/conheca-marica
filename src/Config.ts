@@ -14,6 +14,14 @@ const Config = {
     baseUrl: import.meta.env.VITE_MARICA_BASE_URL,
     token: import.meta.env.VITE_API_TOKEN,
   },
+
+  services: {
+    google: {
+      mapsAPI: {
+        key: import.meta.env.VITE_API_GOOGLEMAP_KEY,
+      },
+    },
+  },
 }
 
 export default Config

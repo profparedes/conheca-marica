@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly PACKAGE_VERSION: string
   readonly VITE_MARICA_BASE_URL?: string
   readonly VITE_API_TOKEN?: string
+  readonly VITE_API_GOOGLEMAP_KEY?: string
   // add more env variables here...
 }
 

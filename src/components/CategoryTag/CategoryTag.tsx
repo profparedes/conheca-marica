@@ -6,7 +6,6 @@ import { CategoryTag } from './style'
 
 interface ICategoryTageProps {
   category: SpotCategoryType
-  // onClick: () => void
 }
 
 const CategoryTage: React.FC<ICategoryTageProps> = ({ category }) => {

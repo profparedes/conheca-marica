@@ -13,7 +13,7 @@ import TitlePage from 'components/TitlePage'
 
 import useTitle from 'hooks/useTitle'
 
-import { BgPage, SearchContainer } from './style'
+import { BgPage, CategoryContainer, SearchContainer } from './style'
 
 const PontosTuristicos: React.FC = () => {
   const setTitle = useTitle()
@@ -84,7 +84,7 @@ const PontosTuristicos: React.FC = () => {
           </div>
           {isLoading && <p className="text-center">Loading...</p>}
           {error && <h2>Falha no carregamento</h2>}
-          <div className="d-flex flex-wrap mb-5 mt-3">
+          <CategoryContainer className="d-flex flex-nowrap flex-md-wrap mb-5 mt-3">
             {!isLoading &&
               !error &&
               Array.isArray(spotCategory) &&
@@ -93,9 +93,9 @@ const PontosTuristicos: React.FC = () => {
                   <CategoryTag category={category} />
                 </div>
               ))}
-          </div>
+          </CategoryContainer>
 
-          <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-4">
             {!isLoading &&
               !error &&
               Array.isArray(spots) &&

@@ -29,3 +29,9 @@ export const SearchContainer = styled.div`
     border: none;
   }
 `
+
+export const CategoryContainer = styled.div`
+  @media (max-width: 767px) {
+    overflow-x: scroll;
+  }
+`

@@ -17,7 +17,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import Config from 'Config'
 
-import { useSpots } from 'context/SpotContext'
+import { useHotels } from 'context/HotelContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
@@ -28,9 +28,9 @@ import useTitle from 'hooks/useTitle'
 
 import { BgPage, CategoryStyled, CoverBanner, IconStyle, ImgApp } from './style'
 
-const PontoTuristicoSelecionado: React.FC = () => {
+const HotelEPousadaSelecionado: React.FC = () => {
   const setTitle = useTitle()
-  const { spot, isLoading, error, fetchSpot } = useSpots()
+  const { hotel, isLoading, error, fetchHotel } = useHotels()
   const { id } = useParams()
   const responsive = [
     {
@@ -63,7 +63,7 @@ const PontoTuristicoSelecionado: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (id) fetchSpot(id)
+    if (id) fetchHotel(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
@@ -73,9 +73,9 @@ const PontoTuristicoSelecionado: React.FC = () => {
       <BgPage className="flex-grow-1">
         {isLoading && <p>Loading...</p>}
         {error && <h2>Falha de carregamento</h2>}
-        {!isLoading && !error && spot && (
+        {!isLoading && !error && hotel && (
           <>
-            {Array.isArray(spot.images) && spot.images.length > 0 && (
+            {Array.isArray(hotel.images) && hotel.images.length > 0 && (
               <Slider
                 className="mb-4"
                 dots
@@ -89,7 +89,7 @@ const PontoTuristicoSelecionado: React.FC = () => {
                 responsive={responsive}
                 pauseOnHover
               >
-                {spot.images.map((img) => (
+                {hotel.images.map((img) => (
                   <div key={img.id}>
                     <CoverBanner
                       style={{ backgroundImage: `url(${img.src})` }}
@@ -101,25 +101,25 @@ const PontoTuristicoSelecionado: React.FC = () => {
             <Container>
               <Row className="mb-5">
                 <Col className="col-12 col-lg-8">
-                  <TitlePage title={spot.nome} />
+                  <TitlePage title={hotel.nome} />
                   <div className="d-flex flex-wrap mt-3">
                     {!isLoading &&
                       !error &&
-                      Array.isArray(spot.categorias) &&
-                      spot.categorias.map((category) => (
+                      Array.isArray(hotel.categorias) &&
+                      hotel.categorias.map((category) => (
                         <CategoryStyled className="me-3" key={category.id}>
                           <p>{category.label}</p>
                         </CategoryStyled>
                       ))}
                   </div>
                   <div className="mt-3">
-                    <p className="fs-5">{spot.descricao_t}</p>
+                    <p className="fs-5">{hotel.descricao_t}</p>
                   </div>
-                  {Array.isArray(spot.addresses) && (
+                  {Array.isArray(hotel.addresses) && (
                     <div className="mt-5">
                       <h2>Sobre</h2>
                       <div className="border-bottom border-secondary mb-3" />
-                      {spot.addresses.map((i) => (
+                      {hotel.addresses.map((i) => (
                         <p
                           key={i.id}
                           className="fs-5 d-flex align-items-center mt-2"
@@ -131,7 +131,7 @@ const PontoTuristicoSelecionado: React.FC = () => {
                         </p>
                       ))}
 
-                      {spot.phones.map((i) => (
+                      {hotel.phones.map((i) => (
                         <p
                           key={i.id}
                           className="fs-5 d-flex align-items-center mt-2"
@@ -144,19 +144,19 @@ const PontoTuristicoSelecionado: React.FC = () => {
                       ))}
                     </div>
                   )}
-                  {Array.isArray(spot.dicas_t) && (
+                  {Array.isArray(hotel.dicas_t) && (
                     <div className="mt-4">
                       <h2>Dicas</h2>
                       <div className="border-bottom border-secondary mb-3" />
-                      <p>{spot?.dicas_t}</p>
+                      <p>{hotel?.dicas_t}</p>
                     </div>
                   )}
-                  {Array.isArray(spot.viajantes) && (
+                  {Array.isArray(hotel.viajantes) && (
                     <div className="mt-4">
                       <h2>Tipos de Viajantes</h2>
                       <div className="border-bottom border-secondary mb-3" />
                       <Row className="row-cols-3">
-                        {spot.viajantes.map((i) => (
+                        {hotel.viajantes.map((i) => (
                           <Col
                             key={i.label}
                             className="d-flex align-items-center"
@@ -172,13 +172,13 @@ const PontoTuristicoSelecionado: React.FC = () => {
                       </Row>
                     </div>
                   )}
-                  {Array.isArray(spot.estruturas) &&
-                    spot.estruturas.length > 0 && (
+                  {Array.isArray(hotel.estruturas) &&
+                    hotel.estruturas.length > 0 && (
                       <div className="mt-4">
                         <h2>Estruturas</h2>
                         <div className="border-bottom border-secondary mb-3" />
                         <Row className="row-cols-3">
-                          {spot.estruturas.map((i) => (
+                          {hotel.estruturas.map((i) => (
                             <Col
                               key={i.label}
                               className="d-flex align-items-center"
@@ -196,13 +196,13 @@ const PontoTuristicoSelecionado: React.FC = () => {
                         </Row>
                       </div>
                     )}
-                  {Array.isArray(spot.restricoes) &&
-                    spot.restricoes.length > 0 && (
+                  {Array.isArray(hotel.restricoes) &&
+                    hotel.restricoes.length > 0 && (
                       <div className="mt-4">
                         <h2>Restricoes</h2>
                         <div className="border-bottom border-secondary mb-3" />
                         <Row className="row-cols-3">
-                          {spot.restricoes.map((i) => (
+                          {hotel.restricoes.map((i) => (
                             <Col
                               key={i.label}
                               className="d-flex align-items-center"
@@ -223,20 +223,20 @@ const PontoTuristicoSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
-                  {/* {Array.isArray(spot.addresses) && spot.addresses.length > 0 && (
+                  {/* {Array.isArray(hotel.addresses) && hotel.addresses.length > 0 && (
                     <div style={{ height: 300 }}>
                       <GoogleMapReact
                         bootstrapURLKeys={{
                           key: `${Config.services.google.mapsAPI.key}`,
                         }}
                         defaultCenter={{
-                          lat: spot.addresses[0].lat,
-                          lng: spot.addresses[0].lng,
+                          lat: hotel.addresses[0].lat,
+                          lng: hotel.addresses[0].lng,
                         }}
                         defaultZoom={11}
                       >
-                        {spot.addresses.map((i) => (
-                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
+                        {hotel.addresses.map((i) => (
+                          <HotelMarker lat={i.lat} lng={i.lng} key={i.id} />
                         ))}
                       </GoogleMapReact>
                     </div>
@@ -265,4 +265,4 @@ const PontoTuristicoSelecionado: React.FC = () => {
   )
 }
 
-export default memo(PontoTuristicoSelecionado)
+export default memo(HotelEPousadaSelecionado)

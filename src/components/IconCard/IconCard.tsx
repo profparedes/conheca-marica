@@ -25,8 +25,10 @@ const IconCard: React.FC<IIconCardProps> = ({
       <div>
         <Icon size={60} />
       </div>
-      <h2>{title}</h2>
-      <p className="text-center mb-3 flex-grow-1">{description}</p>
+      <h2 className="text-center">{title}</h2>
+      <p className="d-none d-md-flex text-center mb-3 flex-grow-1">
+        {description}
+      </p>
       <button type="button">
         <Link className="" to={`${link}`}>
           Acessar
