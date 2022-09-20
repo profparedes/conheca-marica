@@ -28,3 +28,11 @@ export const ImgApp = styled.img`
 export const IconStyle = styled.span`
   color: #6ebd00;
 `
+
+export const CoverBanner = styled.div`
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center center;
+`

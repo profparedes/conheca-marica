@@ -7,6 +7,7 @@ interface ICoverImgProps {
 export const CoverImg = styled.div<ICoverImgProps>`
   background-image: url(${({ capa }) => capa});
   background-size: cover;
+  background-position: center center;
   border-radius: 6px 6px 0 0;
 `
 
