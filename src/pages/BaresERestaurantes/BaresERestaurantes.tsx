@@ -101,7 +101,7 @@ const BaresERestaurantes: React.FC = () => {
               Array.isArray(restaurants) &&
               restaurants.map((item) => (
                 <Col key={item.id} className="d-flex">
-                  <ItemCard item={item} />
+                  <ItemCard endPoint="bares-e-restaurantes" item={item} />
                 </Col>
               ))}
           </Row>

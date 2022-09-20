@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 
 import Artesanato from 'pages/Artesanato'
+import BarERestaurantSelecionado from 'pages/BarERestaurantSelecionado'
 import BaresERestaurantes from 'pages/BaresERestaurantes'
 import ComercioLocal from 'pages/ComercioLocal'
 import CuponsDeDesconto from 'pages/CuponsDeDesconto'
@@ -25,6 +26,10 @@ const Routes: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/artesanato" element={<Artesanato />} />
         <Route path="/bares-e-restaurantes" element={<BaresERestaurantes />} />
+        <Route
+          path="/bares-e-restaurantes/:id"
+          element={<BarERestaurantSelecionado />}
+        />
         <Route path="/comercio-local" element={<ComercioLocal />} />
         <Route path="/cupons-de-desconto" element={<CuponsDeDesconto />} />
         <Route path="/delivery" element={<Delivery />} />
