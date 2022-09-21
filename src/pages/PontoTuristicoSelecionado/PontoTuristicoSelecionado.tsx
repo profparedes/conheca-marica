@@ -1,6 +1,5 @@
 import { memo, useEffect } from 'react'
 
-import GoogleMapReact from 'google-map-react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { BsCheckCircle } from 'react-icons/bs'
 import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
@@ -15,13 +14,11 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import Config from 'Config'
-
 import { useSpots } from 'context/SpotContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
-import SpotMarker from 'components/SpotMarker'
+import MapLocation from 'components/MapLocation'
 import TitlePage from 'components/TitlePage'
 
 import useTitle from 'hooks/useTitle'
@@ -223,24 +220,8 @@ const PontoTuristicoSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
-                  {/* {Array.isArray(spot.addresses) && spot.addresses.length > 0 && (
-                    <div style={{ height: 300 }}>
-                      <GoogleMapReact
-                        bootstrapURLKeys={{
-                          key: `${Config.services.google.mapsAPI.key}`,
-                        }}
-                        defaultCenter={{
-                          lat: spot.addresses[0].lat,
-                          lng: spot.addresses[0].lng,
-                        }}
-                        defaultZoom={11}
-                      >
-                        {spot.addresses.map((i) => (
-                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
-                        ))}
-                      </GoogleMapReact>
-                    </div>
-                  )} */}
+                  {/* {Array.isArray(spot.addresses) &&
+                    spot.addresses.length > 0 && <MapLocation item={spot} />} */}
                   <h2 className="fs-3 fw-bold mt-3">Conheca nosso app</h2>
                   <div className="d-flex mt-3">
                     <ImgApp

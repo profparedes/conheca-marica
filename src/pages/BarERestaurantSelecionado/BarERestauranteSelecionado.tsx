@@ -1,6 +1,5 @@
 import { memo, useEffect } from 'react'
 
-import GoogleMapReact from 'google-map-react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { BsCheckCircle } from 'react-icons/bs'
 import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
@@ -15,14 +14,11 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import Config from 'Config'
-
 import { useRestaurants } from 'context/RestaurantContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import MapLocation from 'components/MapLocation'
-import SpotMarker from 'components/SpotMarker'
 import TitlePage from 'components/TitlePage'
 
 import useTitle from 'hooks/useTitle'
@@ -224,28 +220,10 @@ const RestaurantERestauranteSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
-                  {Array.isArray(restaurant.addresses) &&
+                  {/* {Array.isArray(restaurant.addresses) &&
                     restaurant.addresses.length > 0 && (
                       <MapLocation item={restaurant} />
-                    )}
-                  {/* {Array.isArray(restaurant.addresses) && restaurant.addresses.length > 0 && (
-                    <div style={{ height: 300 }}>
-                      <GoogleMapReact
-                        bootstrapURLKeys={{
-                          key: `${Config.services.google.mapsAPI.key}`,
-                        }}
-                        defaultCenter={{
-                          lat: restaurant.addresses[0].lat,
-                          lng: restaurant.addresses[0].lng,
-                        }}
-                        defaultZoom={11}
-                      >
-                        {restaurant.addresses.map((i) => (
-                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
-                        ))}
-                      </GoogleMapReact>
-                    </div>
-                  )} */}
+                    )} */}
                   <h2 className="fs-3 fw-bold mt-3">Conheca nosso app</h2>
                   <div className="d-flex mt-3">
                     <ImgApp
