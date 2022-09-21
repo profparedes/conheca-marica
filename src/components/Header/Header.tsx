@@ -114,11 +114,13 @@ const Header: React.FC = () => {
             </li>
             <li className="d-flex algin-items-center">
               <FaRoute className="mt-1 me-3" />
-              <Link to="/roteiros-turisticos">Roteiros Turísticos</Link>
+              <a href="https://contato.site/5d9bab8/marica-cvb3/paginaprincipal">
+                Roteiros Turísticos
+              </a>
             </li>
             <li className="d-flex algin-items-center">
               <SiSnapcraft className="mt-1 me-3" />
-              <Link to="/artesanato">Artesanato</Link>
+              <a href="https://www.feirartemarica.com.br/">Artesanato</a>
             </li>
           </ul>
         </Offcanvas.Body>
