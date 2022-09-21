@@ -236,7 +236,7 @@ const StoreEPousadaSelecionado: React.FC = () => {
                         defaultZoom={11}
                       >
                         {store.addresses.map((i) => (
-                          <StoreMarker lat={i.lat} lng={i.lng} key={i.id} />
+                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
                         ))}
                       </GoogleMapReact>
                     </div>

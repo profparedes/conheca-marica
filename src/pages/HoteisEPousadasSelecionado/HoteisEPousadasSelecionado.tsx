@@ -236,7 +236,7 @@ const HotelEPousadaSelecionado: React.FC = () => {
                         defaultZoom={11}
                       >
                         {hotel.addresses.map((i) => (
-                          <HotelMarker lat={i.lat} lng={i.lng} key={i.id} />
+                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
                         ))}
                       </GoogleMapReact>
                     </div>

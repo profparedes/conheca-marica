@@ -236,7 +236,7 @@ const EventoSelecionado: React.FC = () => {
                         defaultZoom={11}
                       >
                         {event.addresses.map((i) => (
-                          <EventMarker lat={i.lat} lng={i.lng} key={i.id} />
+                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
                         ))}
                       </GoogleMapReact>
                     </div>

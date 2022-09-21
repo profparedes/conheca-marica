@@ -21,6 +21,7 @@ import { useRestaurants } from 'context/RestaurantContext'
 
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import MapLocation from 'components/MapLocation'
 import SpotMarker from 'components/SpotMarker'
 import TitlePage from 'components/TitlePage'
 
@@ -223,6 +224,10 @@ const RestaurantERestauranteSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
+                  {Array.isArray(restaurant.addresses) &&
+                    restaurant.addresses.length > 0 && (
+                      <MapLocation item={restaurant} />
+                    )}
                   {/* {Array.isArray(restaurant.addresses) && restaurant.addresses.length > 0 && (
                     <div style={{ height: 300 }}>
                       <GoogleMapReact
@@ -236,7 +241,7 @@ const RestaurantERestauranteSelecionado: React.FC = () => {
                         defaultZoom={11}
                       >
                         {restaurant.addresses.map((i) => (
-                          <RestaurantMarker lat={i.lat} lng={i.lng} key={i.id} />
+                          <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
                         ))}
                       </GoogleMapReact>
                     </div>
