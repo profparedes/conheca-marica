@@ -101,7 +101,7 @@ const Eventos: React.FC = () => {
               Array.isArray(events) &&
               events.map((item) => (
                 <Col key={item.id} className="d-flex">
-                  <ItemCard item={item} />
+                  <ItemCard endPoint="eventos" item={item} />
                 </Col>
               ))}
           </Row>

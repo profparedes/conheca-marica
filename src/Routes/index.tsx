@@ -12,6 +12,7 @@ import Delivery from 'pages/Delivery'
 import EspacoParaEventoSelecionado from 'pages/EspacoParaEventoSelecionado'
 import EspacosParaEventos from 'pages/EspacosParaEventos'
 import Eventos from 'pages/Eventos'
+import EventoSelecionado from 'pages/EventoSelecionado'
 import Home from 'pages/Home'
 import HoteisEPousadas from 'pages/HoteisEPousadas'
 import HoteisEPousadasSelecionado from 'pages/HoteisEPousadasSelecionado'
@@ -45,6 +46,7 @@ const Routes: React.FC = () => {
           element={<EspacoParaEventoSelecionado />}
         />
         <Route path="/eventos" element={<Eventos />} />
+        <Route path="/eventos/:id" element={<EventoSelecionado />} />
         <Route path="/hoteis-e-pousadas" element={<HoteisEPousadas />} />
         <Route
           path="/hoteis-e-pousadas/:id"

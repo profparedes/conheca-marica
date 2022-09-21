@@ -9,15 +9,17 @@ import {
 
 import Api from 'services/Api'
 
-import { EventCategoryType, EventType } from 'types/EventType'
+import { EventCategoryType, EventType, ItemEventType } from 'types/EventType'
 
 interface IContextProps {
   events: EventType[]
+  event: ItemEventType | null
   eventCategory: EventCategoryType[]
   isLoading: boolean
   error: string | null
   fetchSearchEvents: (busca?: string) => Promise<void>
   fetchEvents: () => Promise<void>
+  fetchEvent: (id: number | string) => Promise<void>
   fetchEventsCategory: (id?: number) => Promise<void>
 }
 
@@ -29,6 +31,7 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
 export const EventsProvider: React.FC<IEventProviderProps> = ({ children }) => {
   const [events, setEvents] = useState<EventType[]>([])
+  const [event, setEvent] = useState<ItemEventType | null>(null)
   const [eventCategory, setEventCategory] = useState<EventCategoryType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -47,6 +50,21 @@ export const EventsProvider: React.FC<IEventProviderProps> = ({ children }) => {
       })
       setEvents(response.data.collection)
       setEventCategory(response.data.categorias)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const fetchEvent = useCallback(async (id: number | string) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await Api.get(`/eventos/${id}`)
+      setEvent(response.data.item)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -101,19 +119,23 @@ export const EventsProvider: React.FC<IEventProviderProps> = ({ children }) => {
       value={useMemo(
         () => ({
           events,
+          event,
           isLoading,
           error,
           eventCategory,
           fetchEvents,
+          fetchEvent,
           fetchSearchEvents,
           fetchEventsCategory,
         }),
         [
           events,
+          event,
           eventCategory,
           isLoading,
           error,
           fetchEvents,
+          fetchEvent,
           fetchSearchEvents,
           fetchEventsCategory,
         ],
