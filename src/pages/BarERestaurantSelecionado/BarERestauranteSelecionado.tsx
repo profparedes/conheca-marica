@@ -5,17 +5,15 @@ import { BsCheckCircle } from 'react-icons/bs'
 import { HiOutlineLocationMarker, HiOutlinePhone } from 'react-icons/hi'
 import SVG from 'react-inlinesvg'
 import { useParams } from 'react-router-dom'
-import Slider from 'react-slick'
 
 import AppleStore from 'assets/AppleStore.png'
 import GooglePlay from 'assets/GooglePlay.png'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import { useRestaurants } from 'context/RestaurantContext'
 
+import BannerSlider from 'components/BannerSlider'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
 import MapLocation from 'components/MapLocation'
@@ -23,36 +21,12 @@ import TitlePage from 'components/TitlePage'
 
 import useTitle from 'hooks/useTitle'
 
-import { BgPage, CategoryStyled, CoverBanner, IconStyle, ImgApp } from './style'
+import { BgPage, CategoryStyled, IconStyle, ImgApp } from './style'
 
 const RestaurantERestauranteSelecionado: React.FC = () => {
   const setTitle = useTitle()
   const { restaurant, isLoading, error, fetchRestaurant } = useRestaurants()
   const { id } = useParams()
-  const responsive = [
-    {
-      breakpoint: 1400,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 750,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ]
 
   useEffect(() => {
     setTitle('Sobre a Cidade | Conheça Maricá | Guia Turistico')
@@ -72,29 +46,10 @@ const RestaurantERestauranteSelecionado: React.FC = () => {
         {error && <h2>Falha de carregamento</h2>}
         {!isLoading && !error && restaurant && (
           <>
-            {Array.isArray(restaurant.images) && restaurant.images.length > 0 && (
-              <Slider
-                className="mb-4"
-                dots
-                infinite
-                speed={500}
-                autoplay
-                autoplaySpeed={3000}
-                slidesToShow={4}
-                slidesToScroll={2}
-                initialSlide={0}
-                responsive={responsive}
-                pauseOnHover
-              >
-                {restaurant.images.map((img) => (
-                  <div key={img.id}>
-                    <CoverBanner
-                      style={{ backgroundImage: `url(${img.src})` }}
-                    />
-                  </div>
-                ))}
-              </Slider>
-            )}
+            {Array.isArray(restaurant.images) &&
+              restaurant.images.length > 0 && (
+                <BannerSlider banner={restaurant} />
+              )}
             <Container>
               <Row className="mb-5">
                 <Col className="col-12 col-lg-8">
