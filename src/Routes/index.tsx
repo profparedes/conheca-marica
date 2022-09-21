@@ -9,6 +9,7 @@ import ComercioLocal from 'pages/ComercioLocal'
 import ComercioLocalSelecionado from 'pages/ComercioLocalSelecionado'
 import CuponsDeDesconto from 'pages/CuponsDeDesconto'
 import Delivery from 'pages/Delivery'
+import EspacoParaEventoSelecionado from 'pages/EspacoParaEventoSelecionado'
 import EspacosParaEventos from 'pages/EspacosParaEventos'
 import Eventos from 'pages/Eventos'
 import Home from 'pages/Home'
@@ -39,6 +40,10 @@ const Routes: React.FC = () => {
         <Route path="/cupons-de-desconto" element={<CuponsDeDesconto />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/espacos-para-eventos" element={<EspacosParaEventos />} />
+        <Route
+          path="/espacos-para-eventos/:id"
+          element={<EspacoParaEventoSelecionado />}
+        />
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/hoteis-e-pousadas" element={<HoteisEPousadas />} />
         <Route

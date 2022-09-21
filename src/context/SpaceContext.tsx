@@ -9,15 +9,17 @@ import {
 
 import Api from 'services/Api'
 
-import { SpaceCategoryType, SpaceType } from 'types/SpaceType'
+import { ItemSpaceType, SpaceCategoryType, SpaceType } from 'types/SpaceType'
 
 interface IContextProps {
   spaces: SpaceType[]
+  space: ItemSpaceType | null
   spaceCategory: SpaceCategoryType[]
   isLoading: boolean
   error: string | null
   fetchSearchSpaces: (busca?: string) => Promise<void>
   fetchSpaces: () => Promise<void>
+  fetchSpace: (id: number | string) => Promise<void>
   fetchSpacesCategory: (id?: number) => Promise<void>
 }
 
@@ -29,6 +31,7 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 
 export const SpacesProvider: React.FC<ISpaceProviderProps> = ({ children }) => {
   const [spaces, setSpaces] = useState<SpaceType[]>([])
+  const [space, setSpace] = useState<ItemSpaceType | null>(null)
   const [spaceCategory, setSpaceCategory] = useState<SpaceCategoryType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -41,6 +44,21 @@ export const SpacesProvider: React.FC<ISpaceProviderProps> = ({ children }) => {
       const response = await Api.get('/espacos')
       setSpaces(response.data.collection)
       setSpaceCategory(response.data.categorias)
+    } catch {
+      // eslint-disable-next-line no-console
+      setError('Algo de errado não está certo!')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const fetchSpace = useCallback(async (id: number | string) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await Api.get(`/espacos/${id}`)
+      setSpace(response.data.item)
     } catch {
       // eslint-disable-next-line no-console
       setError('Algo de errado não está certo!')
@@ -95,19 +113,23 @@ export const SpacesProvider: React.FC<ISpaceProviderProps> = ({ children }) => {
       value={useMemo(
         () => ({
           spaces,
+          space,
           isLoading,
           error,
           spaceCategory,
           fetchSpaces,
+          fetchSpace,
           fetchSearchSpaces,
           fetchSpacesCategory,
         }),
         [
           spaces,
+          space,
           spaceCategory,
           isLoading,
           error,
           fetchSpaces,
+          fetchSpace,
           fetchSearchSpaces,
           fetchSpacesCategory,
         ],
