@@ -18,23 +18,21 @@ import { StoresProvider } from 'context/StoreContext'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <AboutProvider>
-      <EventsProvider>
-        <SpacesProvider>
-          <StoresProvider>
-            <RestaurantsProvider>
-              <HotelsProvider>
-                <SpotsProvider>
-                  <BannersProvider>
-                    <App />
-                  </BannersProvider>
-                </SpotsProvider>
-              </HotelsProvider>
-            </RestaurantsProvider>
-          </StoresProvider>
-        </SpacesProvider>
-      </EventsProvider>
-    </AboutProvider>
-  </React.StrictMode>,
+  <AboutProvider>
+    <EventsProvider>
+      <SpacesProvider>
+        <StoresProvider>
+          <RestaurantsProvider>
+            <HotelsProvider>
+              <SpotsProvider>
+                <BannersProvider>
+                  <App />
+                </BannersProvider>
+              </SpotsProvider>
+            </HotelsProvider>
+          </RestaurantsProvider>
+        </StoresProvider>
+      </SpacesProvider>
+    </EventsProvider>
+  </AboutProvider>,
 )

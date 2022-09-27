@@ -136,9 +136,8 @@ const RestaurantERestauranteSelecionado: React.FC = () => {
                               className="d-flex align-items-center"
                             >
                               <SVG
-                                src={`${i.icone}/menu.svg`}
+                                src={`${i.icone}`}
                                 width={22}
-                                title="Menu"
                                 className="me-3"
                                 fill="#6ebd00"
                               />

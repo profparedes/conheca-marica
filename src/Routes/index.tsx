@@ -2,7 +2,6 @@ import { memo } from 'react'
 
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 
-import Artesanato from 'pages/Artesanato'
 import BarERestaurantSelecionado from 'pages/BarERestaurantSelecionado'
 import BaresERestaurantes from 'pages/BaresERestaurantes'
 import ComercioLocal from 'pages/ComercioLocal'
@@ -19,7 +18,6 @@ import HoteisEPousadasSelecionado from 'pages/HoteisEPousadasSelecionado'
 import NotFound from 'pages/NotFound'
 import PontosTuristicos from 'pages/PontosTuristicos'
 import PontoTuristicoSelecionado from 'pages/PontoTuristicoSelecionado'
-import RoteirosTuristicos from 'pages/RoteirosTuristicos'
 import SobreACidade from 'pages/SobreACidade'
 
 const Routes: React.FC = () => {
@@ -27,7 +25,6 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" element={<Home />} />
-        <Route path="/artesanato" element={<Artesanato />} />
         <Route path="/bares-e-restaurantes" element={<BaresERestaurantes />} />
         <Route
           path="/bares-e-restaurantes/:id"
@@ -57,7 +54,6 @@ const Routes: React.FC = () => {
           path="/pontos-turisticos/:id"
           element={<PontoTuristicoSelecionado />}
         />
-        <Route path="/roteiros-turisticos" element={<RoteirosTuristicos />} />
         <Route path="/sobre" element={<SobreACidade />} />
         <Route path="*" element={<NotFound />} />
       </Switch>

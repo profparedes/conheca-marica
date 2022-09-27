@@ -46,8 +46,20 @@ const PontoTuristicoSelecionado: React.FC = () => {
         {error && <h2>Falha de carregamento</h2>}
         {!isLoading && !error && spot && (
           <>
-            {Array.isArray(spot.images) && spot.images.length > 0 && (
+            {Array.isArray(spot.images) && spot.images.length > 4 && (
               <BannerSlider banner={spot} />
+            )}
+            {Array.isArray(spot.images) && spot.images.length <= 3 && (
+              <div className="d-flex justify-content-center">
+                {spot.images.map((image) => (
+                  <img
+                    style={{ maxWidth: 500 }}
+                    key={image.id}
+                    src={image.src}
+                    alt="Imagem"
+                  />
+                ))}
+              </div>
             )}
             <Container>
               <Row className="mb-5">
@@ -174,8 +186,8 @@ const PontoTuristicoSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
-                  {/* {Array.isArray(spot.addresses) &&
-                    spot.addresses.length > 0 && <MapLocation item={spot} />} */}
+                  {Array.isArray(spot.addresses) &&
+                    spot.addresses.length > 0 && <MapLocation item={spot} />}
                   <h2 className="fs-3 fw-bold mt-3">Conheca nosso app</h2>
                   <div className="d-flex mt-3">
                     <ImgApp

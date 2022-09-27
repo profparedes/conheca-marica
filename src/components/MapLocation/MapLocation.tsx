@@ -34,7 +34,7 @@ const MapLocation: React.FC<IMapLocationProps> = ({ item }) => {
           lat: item.addresses[0].lat,
           lng: item.addresses[0].lng,
         }}
-        defaultZoom={11}
+        defaultZoom={15}
       >
         {item.addresses.map((i) => (
           <SpotMarker lat={i.lat} lng={i.lng} key={i.id} />
