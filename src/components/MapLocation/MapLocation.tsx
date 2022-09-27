@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react'
+import { memo } from 'react'
 
 import GoogleMapReact from 'google-map-react'
 

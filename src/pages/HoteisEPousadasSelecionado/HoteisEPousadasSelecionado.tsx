@@ -174,8 +174,8 @@ const HotelEPousadaSelecionado: React.FC = () => {
                 </Col>
                 <Col className="col-12 col-lg-4">
                   <h2 className="fs-3 fw-bold mb-3">Localizaçao</h2>
-                  {/* {Array.isArray(hotel.addresses) &&
-                    hotel.addresses.length > 0 && <MapLocation item={hotel} />} */}
+                  {Array.isArray(hotel.addresses) &&
+                    hotel.addresses.length > 0 && <MapLocation item={hotel} />}
                   <h2 className="fs-3 fw-bold mt-3">Conheca nosso app</h2>
                   <div className="d-flex mt-3">
                     <ImgApp
